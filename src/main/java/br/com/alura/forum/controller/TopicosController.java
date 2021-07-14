@@ -4,20 +4,20 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.alura.forum.controller.dto.TopicoDto;
 import br.com.alura.forum.modelo.Curso;
 import br.com.alura.forum.modelo.Topico;
 
 @RestController
 public class TopicosController {
-		
+
 	@RequestMapping("/topicos")
-	public List<Topico> lista() {
-			Topico topico = new Topico("Duvida", "Duvida com Spring", new Curso("Spring", "Programação"));
-			
-			return Arrays.asList(topico, topico, topico);
+	public List<TopicoDto> lista() {
+		Topico topico = new Topico("Duvida", "Duvida com Spring", new Curso("Spring", "Programação"));
+
+		return TopicoDto.converter(Arrays.asList(topico, topico, topico));
 	}
-	
+
 }
